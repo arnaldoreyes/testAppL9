@@ -23,6 +23,8 @@
                             </div>
                         </div>
 
+                        <a href="{{route('notes.edit',$note->id)}}">Edit</a>
+
                         <form method="POST" action="{{route('notes.destroy',$note->id)}}">
                             @csrf
                             @method('DELETE')
