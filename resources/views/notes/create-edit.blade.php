@@ -8,6 +8,13 @@
                     <div class="card-header">{{ __('Nota') }}</div>
 
                     <div class="card-body">
+                        <div>
+                            @if ($errors->any())
+                                @foreach ($errors->all() as $e)
+                                    {{$e}}
+                                @endforeach
+                            @endif
+                        </div>
                         <form action="{{$isEdit ? route('notes.update',$note->id) : route('notes.store')}}" method="POST">
                             @csrf
                             @if ($isEdit)
@@ -16,14 +23,14 @@
                             <div class="row mb-3">
                                 <label for="title" class="col-md-4 col-form-label text-md-end">{{ __('Titulo') }}</label>
                                 <div class="col-md-6">
-                                    <input id="title" type="text" class="form-control" name="title" value="{{$isEdit ? $note->title : ''}}" required>
+                                    <input id="title" type="text" class="form-control" name="title" value="{{$isEdit ? $note->title : old('tilte')}}" required>
                                 </div>
                             </div>
 
                             <div class="row mb-3">
                                 <label for="descipcion" class="col-md-4 col-form-label text-md-end">{{ __('Descripcion') }}</label>
                                 <div class="col-md-6">
-                                    <textarea name="description" id="description" type="text" class="form-control" required>{{$isEdit ? $note->description : ''}}</textarea>
+                                    <textarea name="description" id="description" type="text" class="form-control" required>{{$isEdit ? $note->description : old('description')}}</textarea>
                                 </div>
                             </div>
 

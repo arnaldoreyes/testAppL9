@@ -23,14 +23,16 @@
                             </div>
                         </div>
 
-                        <a href="{{route('notes.edit',$note->id)}}">Edit</a>
+                        <div class="d-flex">
+                            <a class="btn me-1 btn-warning" href="{{route('notes.edit',$note->id)}}">Edit</a>
 
-                        <form method="POST" action="{{route('notes.destroy',$note->id)}}">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
+                            <form method="POST" action="{{route('notes.destroy',$note->id)}}">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
 
+                        </div>
                     </div>
                 </div>
             </div>

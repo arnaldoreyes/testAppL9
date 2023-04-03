@@ -14,17 +14,17 @@
                       </tr>
                     </thead>
                     <tbody>
-                        @foreach (\App\Models\Note::all() as $item)
+                        @foreach ($notes as $item)
                             <tr>
                                 <td>{{$item->title}}</td>
                                 <td>{{$item->created_at}}</td>
-                                <td>
-                                    <a href="{{route('notes.show',$item->id)}}">Mostrar</a>
-                                    <a href="{{route('notes.edit',$item->id)}}">Editar</a>
+                                <td class="d-flex">
+                                    <a class="btn me-1 btn-sm btn-primary" href="{{route('notes.show',$item->id)}}"><i class="fa-solid fa-eye"></i></a>
+                                    <a class="btn me-1 btn-sm btn-warning" href="{{route('notes.edit',$item->id)}}"><i class="fa-solid fa-pen-to-square"></i></a>
                                     <form method="POST" action="{{route('notes.destroy',$item->id)}}">
                                         @csrf
                                         @method('DELETE')
-                                        <button class="btn btn-sm btn-danger">Delete</button>
+                                        <button class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i></button>
                                     </form>
                                 </td>
                             </tr>
